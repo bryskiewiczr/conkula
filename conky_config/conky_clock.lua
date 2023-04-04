@@ -39,7 +39,7 @@ conky.config = {
     -- font
     use_xft = true,
     uppercase = false,
-    font = 'Product Sans:regular:size=12',
+    font = '__FONT__:regular:size=12',
     draw_outline = false,
     draw_shades = false,
     -- default colors
@@ -53,7 +53,7 @@ conky.config = {
 
 
 conky.text = [[
-${font Product Sans:bold:size=36}${color0}${time %H}:${time %M}:${time %S}
-${voffset -20}${font Product Sans:bold:size=24}${color1}${time %d} ${color0}${time %b} ${color1}${time %Y}
-${font Product Sans:bold:size=24}${color1}${time %A}
+${font __FONT__:bold:size=36}${color0}${time %H}:${time %M}:${time %S}
+${voffset -20}${font __FONT__:bold:size=24}${color1}${time %d} ${color0}${time %b} ${color1}${time %Y}
+${font __FONT__:bold:size=24}${color1}${time %A}
 ]]

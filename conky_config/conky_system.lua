@@ -39,7 +39,7 @@ conky.config = {
     -- font
     use_xft = true,
     uppercase = false,
-    font = 'Product Sans:regular:size=12',
+    font = '__FONT__:regular:size=12',
     draw_outline = false,
     draw_shades = false,
     -- default colors
@@ -52,14 +52,14 @@ conky.config = {
 }
 
 conky.text = [[
-${font Product Sans:regular:size=12}${color1}Host: ${alignr}${color0}${font Product Sans:bold:size=12}${nodename}
-${font Product Sans:regular:size=12}${color1}Uptime: ${alignr}${color0}${font Product Sans:bold:size=12}${uptime}
-${font Product Sans:regular:size=12}${color1}CPU: ${alignr}${color0}${font Product Sans:bold:size=12}${cpu cpu0}%
+${font __FONT__:regular:size=12}${color1}Host: ${alignr}${color0}${font __FONT__:bold:size=12}${nodename}
+${font __FONT__:regular:size=12}${color1}Uptime: ${alignr}${color0}${font __FONT__:bold:size=12}${uptime}
+${font __FONT__:regular:size=12}${color1}CPU: ${alignr}${color0}${font __FONT__:bold:size=12}${cpu cpu0}%
 ${alignr}${cpubar 5,200}
-${font Product Sans:regular:size=12}${color1}RAM: ${alignr}${color0}${font Product Sans:bold:size=12}${memperc}%
+${font __FONT__:regular:size=12}${color1}RAM: ${alignr}${color0}${font __FONT__:bold:size=12}${memperc}%
 ${alignr}${membar 5,200}
-${font Product Sans:regular:size=12}${color1}SWAP: ${alignr}${color0}${font Product Sans:bold:size=12}${swapperc}%
+${font __FONT__:regular:size=12}${color1}SWAP: ${alignr}${color0}${font __FONT__:bold:size=12}${swapperc}%
 ${alignr}${swapbar 5,200}
-${font Product Sans:regular:size=12}${color1}Root: ${alignr}${color0}${font Product Sans:bold:size=12}${fs_used}/${fs_size /}
+${font __FONT__:regular:size=12}${color1}Root: ${alignr}${color0}${font __FONT__:bold:size=12}${fs_used}/${fs_size /}
 ${alignr}${fs_bar 5,200 /}
 ]]

@@ -40,7 +40,7 @@ conky.config = {
     -- font
     use_xft = true,
     uppercase = false,
-    font = 'Product Sans:regular:size=12',
+    font = '__FONT__:regular:size=12',
     draw_outline = false,
     draw_shades = false,
     -- default colors
@@ -56,9 +56,9 @@ conky.config = {
 
 conky.text = [[
 ${if_running spotify}\
-${font Product Sans:bold:size=24}${color1}${exec ~/.config/conky/conkula/sh/spotify_artist.sh}
-${alignr}${voffset -8}${font Product Sans:bold:size=18}${color0}${exec ~/.config/conky/conkula/sh/spotify_title.sh}
-${voffset -5}${font Product Sans:regular:size=12}${color1}${exec ~/.config/conky/conkula/sh/spotify_status.sh} \
+${font __FONT__:bold:size=24}${color1}${exec ~/.config/conky/conkula/sh/spotify_artist.sh}
+${alignr}${voffset -8}${font __FONT__:bold:size=18}${color0}${exec ~/.config/conky/conkula/sh/spotify_title.sh}
+${voffset -5}${font __FONT__:regular:size=12}${color1}${exec ~/.config/conky/conkula/sh/spotify_status.sh} \
 ${voffset 1}${alignr}${color0}${execbar 5,200 ~/.config/conky/conkula/sh/spotify_playback_progress.sh}
 ${endif}\
 ]]

@@ -39,7 +39,7 @@ conky.config = {
     -- font
     use_xft = true,
     uppercase = false,
-    font = 'Product Sans:regular:size=12',
+    font = '__FONT__:regular:size=12',
     draw_outline = false,
     draw_shades = false,
     -- default colors
@@ -54,13 +54,13 @@ conky.config = {
 
 
 conky.text = [[
-${font Product Sans:bold:size=36}${color0}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_temp}
-${voffset -20}${font Product Sans:bold:size=24}${color0}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_conditions}
-${voffset -10}${font Product Sans:regular:size=12}${color1}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_location}, \
-${font Product Sans:regular:size=12}${color1}feels like: ${color0}${font Product Sans:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_feel}
-${font Product Sans:regular:size=12}${color1}Humidity: ${alignr}${color0}${font Product Sans:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_humidity}
-${font Product Sans:regular:size=12}${color1}Precipitation: ${alignr}${color0}${font Product Sans:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_precipitation}
-${font Product Sans:regular:size=12}${color1}Wind: ${alignr}${color0}${font Product Sans:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_wind}
-${font Product Sans:regular:size=12}${color1}Pressure: ${alignr}${color0}${font Product Sans:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_pressure}
-${font Product Sans:regular:size=12}${color1}Updated: ${alignr}${color0}${font Product Sans:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_update_time}
+${font __FONT__:bold:size=36}${color0}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_temp}
+${voffset -20}${font __FONT__:bold:size=24}${color0}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_conditions}
+${voffset -10}${font __FONT__:regular:size=12}${color1}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_location}, \
+${font __FONT__:regular:size=12}${color1}feels like: ${color0}${font __FONT__:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_feel}
+${font __FONT__:regular:size=12}${color1}Humidity: ${alignr}${color0}${font __FONT__:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_humidity}
+${font __FONT__:regular:size=12}${color1}Precipitation: ${alignr}${color0}${font __FONT__:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_precipitation}
+${font __FONT__:regular:size=12}${color1}Wind: ${alignr}${color0}${font __FONT__:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_wind}
+${font __FONT__:regular:size=12}${color1}Pressure: ${alignr}${color0}${font __FONT__:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_pressure}
+${font __FONT__:regular:size=12}${color1}Updated: ${alignr}${color0}${font __FONT__:bold:size=12}${texeci 1800 python3 ~/.config/conky/conkula/python/wttr.py print_update_time}
 ]]
