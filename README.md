@@ -50,7 +50,7 @@
     ```
 
     Examples:
-    
+
     ```
     # set white and lime color scheme with Fira Code font 
     # and Warsaw as the city for your weather widget
@@ -66,24 +66,24 @@ After the installation is done, the program will ask whether or not you wanna ru
 
 Conkula can also be ran manually by invoking
 
-    ```
-    bash ~/.config/conky/conkula/startup.sh
-    ```
+```
+bash ~/.config/conky/conkula/startup.sh
+```
 
 ### Other
 
 Useful aliases/commands to add to your `.bashrc` or `.bash_aliases` file
 
-    ```
-    # Starts up Conky with Conkula config
-    alias conkula="bash ~/.config/conky/conkula/startup.sh"
+```
+# Starts up Conky with Conkula config
+alias conkula="bash ~/.config/conky/conkula/startup.sh"
 
-    # Kills all Conky processes
-    alias conkill="ps aux | grep -ie conky | awk '{print $2}' | xargs kill -9"
+# Kills all Conky processes
+alias conkill="ps aux | grep -ie conky | awk '{print $2}' | xargs kill -9"
 
-    # Also kills all Conky processes, simpler
-    killall conky
-    ```
+# Also kills all Conky processes, simpler
+killall conky
+```
 ### Screenshots
 
 ### To-dos
