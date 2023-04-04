@@ -94,6 +94,11 @@ White and Purple setup with Lato font
 
 ![White and Purple setup with Lato font](/screenshots/conkula_white_purple_lato.png?raw=true)
 
+Yellow and white setup with Roboto font
+
+![Yellow and white setup with Roboto font](/screenshots/conkula_yellow_white_roboto.png?raw=true)
+
 ### To-dos
 
 Add support for 12-hour clock format
+Selector for position (top-left/top-right), now only defaults to top-right
