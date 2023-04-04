@@ -83,7 +83,7 @@ def set_font(font):
     for file in files:
         with open(file, 'r') as f:
             data = f.read()
-        data = data.replace('FONT', font)
+        data = data.replace('__FONT__', font)
         with open(file, 'w') as f:
             f.write(data)
     print('Font set!')
