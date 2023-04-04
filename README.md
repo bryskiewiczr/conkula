@@ -13,3 +13,8 @@
     - List can also be viewed by running `python3 ~/.config/conky/conkula/conkula.py colors`
 - After the installation is done, the program will ask whether or not you wanna run Conky with your new settings
 - If you skip the above step, you can run the config with `sh ~/.config/conky/conkula/startup.sh`
+
+### Todo:
+
+monospace/non-monospace font
+additional fonts
