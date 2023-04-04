@@ -2,6 +2,11 @@
 
 - [Conky](https://github.com/brndnmtthws/conky) -- v.1.10 or higher due to new Lua syntax. Try `conky --version` to see what version is currently installed on your System
 - [PyCurl](http://pycurl.io/)
+    - PyCurl might throw an error `error: metadata-generation-failed`, if that happens, run:
+    ```
+    sudo apt install python-dev build-essential  # on Ubuntu
+    python3 -m pip install --upgrade pip setuptools wheel
+    ```
 - One of the currently supported fonts installed on your System. Conkula requires `Regular` and `Bold` font faces:
     - [Lato](https://fonts.google.com/?query=Lato)
     - [Roboto](https://fonts.google.com/?query=Roboto)
