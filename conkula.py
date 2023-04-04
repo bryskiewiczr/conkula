@@ -103,4 +103,8 @@ def initial_run():
 
 if __name__ == '__main__':
     args = sys.argv
-    globals()[args[1]](*args[2:])
+    try:
+        globals()[args[1]](*args[2:])
+    except KeyError:
+        print('Error: invalid command\nHave you missed the `setup` keyword?')
+        print(f'Try: `python3 conkula.py setup main_color accent_color city`')
