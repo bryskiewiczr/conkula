@@ -86,6 +86,14 @@ killall conky
 ```
 ### Screenshots
 
+White and Lime setup with Fira Code font
+
+![White and Lime setup with Fira Code font](/screenshots/conkula_white_lime_fira_code.png?raw=true)
+
+White and Purple setup with Lato font
+
+![White and Purple setup with Lato font](/screenshots/conkula_white_purple_lato.png?raw=true)
+
 ### To-dos
 
 Add support for 12-hour clock format
