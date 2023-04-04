@@ -32,21 +32,28 @@
 ### Setup
 
 1. Create config directory for Conky
+
     ```
     mkdir -p ~/.config/conky/conkula && cd ~/.config/conky/conkula
     ```
+
 2. Clone the repository into config directory and cd 
+
     ```
     git clone https://github.com/bryskiewiczr/conkula.git .
     ```
+
 3. Start the setup script
+
     ```
     python3 conkula.py setup main_color accent_color city font
     ```
 
     Examples:
+    
     ```
-    # set white and lime color scheme with Fira Code font and Warsaw as the city for your weather widget
+    # set white and lime color scheme with Fira Code font 
+    # and Warsaw as the city for your weather widget
     python3 conkula.py setup white lime warsaw fira
 
     # skip the font to default to Mono
@@ -55,19 +62,25 @@
 
 ### Running
 
-1. After the installation is done, the program will ask whether or not you wanna run Conky with your new settings
+After the installation is done, the program will ask whether or not you wanna run Conky with your new settings
 
-2. Conkula can also be ran manually by invoking
+Conkula can also be ran manually by invoking
+
     ```
     bash ~/.config/conky/conkula/startup.sh
     ```
 
-3. Useful aliases/commands to add to your `.bashrc` or `.bash_aliases` file
+### Other
+
+Useful aliases/commands to add to your `.bashrc` or `.bash_aliases` file
+
     ```
     # Starts up Conky with Conkula config
     alias conkula="bash ~/.config/conky/conkula/startup.sh"
+
     # Kills all Conky processes
     alias conkill="ps aux | grep -ie conky | awk '{print $2}' | xargs kill -9"
+
     # Also kills all Conky processes, simpler
     killall conky
     ```
