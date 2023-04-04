@@ -2,7 +2,7 @@
 
 - [Conky](https://github.com/brndnmtthws/conky) -- v.1.10 or higher due to new Lua syntax. Try `conky --version` to see what version is currently installed on your System
 - [PyCurl](http://pycurl.io/)
-- One of the currently supported fonts installed on your System:
+- One of the currently supported fonts installed on your System. Conkula requires `Regular` and `Bold` font faces:
     - [Lato](https://fonts.google.com/?query=Lato)
     - [Roboto](https://fonts.google.com/?query=Roboto)
     - [Fira Code](https://fonts.google.com/?query=Fira+Code)
