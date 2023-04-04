@@ -1,6 +1,7 @@
 ### Dependencies
 
 - [Conky](https://github.com/brndnmtthws/conky) -- v.1.10 or higher due to new Lua syntax. Try `conky --version` to see what version is currently installed on your System
+- [libcurl](https://curl.se/libcurl/) -- for PyCurl to install properly `sudo apt install libcurl4-openssl-dev`
 - [PyCurl](http://pycurl.io/) -- `pip3 install --upgrade setuptools wheel && pip3 install pycurl`
 - One of the currently supported fonts installed on your System. Conkula requires `Regular` and `Bold` font faces:
     - [Lato](https://fonts.google.com/?query=Lato)
