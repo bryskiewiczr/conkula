@@ -79,11 +79,11 @@ def set_font(font):
     if font == 'Mono'.casefold():
         print('Font not selected, defaulting to Mono')
     elif font == 'roboto'.casefold():
-        font = self.possible_fonts[font]
+        font = possible_fonts[font]
     elif font == 'lato'.casefold():
-        font = self.possible_fonts[font]
+        font = possible_fonts[font]
     elif font == 'fira'.casefold():
-        font = self.possible_fonts[font]
+        font = possible_fonts[font]
     else:
         print('Unsupported font selected, aborting.')
         return 1
