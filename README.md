@@ -8,7 +8,7 @@
 
 1. Create config directory for Conky
     ```
-    mkdir -rp ~/.config/conky/
+    mkdir -p ~/.config/conky/
     ```
 2. Clone the repository into config directory and cd 
     ```
