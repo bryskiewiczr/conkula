@@ -18,29 +18,32 @@ def colors():
     print(', '.join(list(possible_colors)))
 
 def setup(*args):
-    if len(args) >= 4:
-        print('Error: too many arguments provided. \nTry `python3 conkula.py setup main_color accent_color city`')
+    if len(args) >= 5:
+        print('Error: too many arguments provided. \nTry `python3 conkula.py setup main_color accent_color city font`')
         return 1
     try:
         main_color = args[0]
         accent_color = args[1]
+        city = args[2]
+        try:
+            font = args[3]
+        except IndexError:
+            font = 'Mono'
         if main_color not in list(possible_colors) or accent_color not in list(possible_colors):
             print('Error: invalid color selected. \nTry `python3 conkula.py colors` to see a list of possible colors')
             return 1
-        city = args[2]
-        print(f'main_color: {main_color}')
-        print(f'accent_color: {accent_color}')
-        print(f'city: {city}')
+        print(f'Main color: {main_color} | Accent color: {accent_color} | Font: {font} | City: {city}')
         confirm = input('is your configuration correct? type `y` to proceed >>> ')
         if confirm != 'y':
             print('Error: please enter a correct location. \nTry `warsaw` or `los+angeles`')
             return 1
         else:
-            run_setup(main_color, accent_color, city)
+            run_setup(main_color, accent_color, city, font)
     except IndexError:
-        print('Error: not enough arguments provided. \nTry `python3 conkula.py setup main_color accent_color city`')
+        print('Error: not enough arguments provided. \nTry `python3 conkula.py setup main_color accent_color city font`')
     
-def run_setup(main_color, accent_color, city):
+def run_setup(main_color, accent_color, city, font):
+    set_font(font)
     set_colors(main_color, accent_color)
     set_city(city)
     initial_run()
@@ -65,8 +68,16 @@ def set_colors(main_color, accent_color):
     time.sleep(0.5)
 
 def set_font(font):
+    if font == 'Mono':
+        print('Font not selected, defaulting to Mono')
+    elif font == 'roboto'.casefold():
+        font = 'Roboto'
+    elif font == 'lato'.casefold():
+        font = 'Lato'
+    else:
+        print('Unsupported font selected, aborting.')
+        return 1
     print(f'Setting the font to {font}')
-    # if font...
     time.sleep(1)
     files = glob.glob(f'/home/{os.getlogin()}/.config/conky/conkula/conky_config/conky_*')
     for file in files:
@@ -75,7 +86,8 @@ def set_font(font):
         data = data.replace('FONT', font)
         with open(file, 'w') as f:
             f.write(data)
-    print('set!')
+    print('Font set!')
+    time.sleep(0.5)
 
 def set_city(city):
     print(f'Setting city to {city.replace("+", " ")}')
@@ -107,4 +119,4 @@ if __name__ == '__main__':
         globals()[args[1]](*args[2:])
     except KeyError:
         print('Error: invalid command\nHave you missed the `setup` keyword?')
-        print(f'Try: `python3 conkula.py setup main_color accent_color city`')
+        print(f'Try: `python3 conkula.py setup main_color accent_color city font`')
