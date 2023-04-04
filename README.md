@@ -8,6 +8,27 @@
     - [Fira Code](https://fonts.google.com/?query=Fira+Code)
     - Mono (*default monospace font)
 
+### Preparation
+
+- Before installing the config on your System please review your configuration options:
+    - Possible colors (you can also run `python3 conkula.py colors` to view available colors)
+        - `White` (recommended as main color)
+        - `Red`
+        - `Yellow`
+        - `Cyan`
+        - `Orange`
+        - `Purple`
+        - `Pink`
+        - `Lime`
+    - Possible fonts (must install the font on your System first, you can also run `python3 conkula.py fonts` to view available fonts):
+        - `Lato` - Lato font
+        - `Roboto` - Roboto font
+        - `Fira` - Fira Code font (monospace)
+        - `Empty/Mono` - Mono is default if no choice is made or you explicitly type `Mono`, monospace)
+    - City for the weather .lua to work
+        - If your city's name is single word, simply type the city name, i.e. `warsaw`
+        - If your city's name has multiple words, use + signs instead of spaces, i.e. `new+york`
+
 ### Setup
 
 1. Create config directory for Conky
@@ -18,26 +39,16 @@
     ```
     git clone https://github.com/bryskiewiczr/conkula.git .
     ```
-3. Choose your settings
+3. Start the setup script
     ```
-    # List of available colors:
-    ['white', 'red', 'yellow', 'cyan', 'orange', 'purple', 'pink', 'lime']
-
-    # List of available colors can also be viewed by running
-    python3 conkula.py colors
-    > ['white', 'red', 'yellow', 'cyan', 'orange', 'purple', 'pink', 'lime']
-
-    # If your city name has more than one word use spaces or + signs to separate the words
-    Los Angeles -> los angeles
-    or
-    Los Angeles -> los+angeles
+    python3 conkula.py setup main_color accent_color city font
     ```
 
-4. Start the setup script
+    Examples:
     ```
-    python3 conkula.py install main_color accent_color city
+    python3 conkula.py setup white lime warsaw fira  # will set Conky with white and lime color scheme and Fira Code font for Warsaw weather
 
-    i.e. python3 conkula.py install white lime warsaw
+    python3 conkula.py setup white red los+angeles  # since the font is skipped, it will default to Mono
     ```
 
 ### Running
@@ -57,3 +68,5 @@
 ### Screenshots
 
 ### To-dos
+
+Add support for 12-hour clock format

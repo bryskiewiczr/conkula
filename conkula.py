@@ -14,8 +14,16 @@ possible_colors = {'white': 'f8f8f2',
                'pink': 'ff79c6',
                'lime': '50fa7b'}
 
+possible_fonts = {'lato': 'Lato',
+                  'roboto': 'Roboto',
+                  'fira': 'Fira Code',
+                  'mono': 'Mono'}
+
 def colors():
     print(', '.join(list(possible_colors)))
+
+def fonts():
+    print(', '.join(list(possible_fonts)))
 
 def setup(*args):
     if len(args) >= 5:
@@ -68,14 +76,14 @@ def set_colors(main_color, accent_color):
     time.sleep(0.5)
 
 def set_font(font):
-    if font == 'Mono':
+    if font == 'Mono'.casefold():
         print('Font not selected, defaulting to Mono')
     elif font == 'roboto'.casefold():
-        font = 'Roboto'
+        font = self.possible_fonts[font]
     elif font == 'lato'.casefold():
-        font = 'Lato'
+        font = self.possible_fonts[font]
     elif font == 'fira'.casefold():
-        font = 'Fira Code'
+        font = self.possible_fonts[font]
     else:
         print('Unsupported font selected, aborting.')
         return 1
