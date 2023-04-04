@@ -40,7 +40,7 @@ conky.config = {
     -- font
     use_xft = true,
     uppercase = false,
-    font = '__FONT__:regular:size=12',
+    font = 'mono:regular:size=12',
     draw_outline = false,
     draw_shades = false,
     -- default colors
