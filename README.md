@@ -12,7 +12,7 @@
     ```
 2. Clone the repository into config directory and cd 
     ```
-    git clone https://github.com/bryskiewiczr/conkula.git ~/.config/conky/ & cd ~/.config/conky/conkula
+    git clone https://github.com/bryskiewiczr/conkula.git ~/.config/conky/conkula & cd ~/.config/conky/conkula
     ```
 3. Choose your settings
     ```
