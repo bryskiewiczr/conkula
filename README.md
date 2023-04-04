@@ -46,9 +46,11 @@
 
     Examples:
     ```
-    python3 conkula.py setup white lime warsaw fira  # will set Conky with white and lime color scheme and Fira Code font for Warsaw weather
+    # set white and lime color scheme with Fira Code font and Warsaw as the city for your weather widget
+    python3 conkula.py setup white lime warsaw fira
 
-    python3 conkula.py setup white red los+angeles  # since the font is skipped, it will default to Mono
+    # skip the font to default to Mono
+    python3 conkula.py setup white red los+angeles
     ```
 
 ### Running
@@ -60,10 +62,14 @@
     bash ~/.config/conky/conkula/startup.sh
     ```
 
-3. Useful aliases to add to your `.bashrc` or `.bash_aliases` file
+3. Useful aliases/commands to add to your `.bashrc` or `.bash_aliases` file
     ```
-    alias conkula="bash ~/.config/conky/conkula/startup.sh"                         # Starts up Conky with this config
-    alias conkill="ps aux | grep -ie conky | awk '{print $2}' | xargs kill -9"      # Kills all Conky processes
+    # Starts up Conky with Conkula config
+    alias conkula="bash ~/.config/conky/conkula/startup.sh"
+    # Kills all Conky processes
+    alias conkill="ps aux | grep -ie conky | awk '{print $2}' | xargs kill -9"
+    # Also kills all Conky processes, simpler
+    killall conky
     ```
 ### Screenshots
 

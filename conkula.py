@@ -121,7 +121,7 @@ def initial_run():
         run(f'{command}', shell=True, check=True, text=True)
     else:
         print('Skipping the startup')
-        print('Type `sh ~/.config/conky/conkula/startup.sh` to run conky if you change your mind!')
+        print('Type `bash ~/.config/conky/conkula/startup.sh` to run conky if you change your mind!')
 
 if __name__ == '__main__':
     args = sys.argv
