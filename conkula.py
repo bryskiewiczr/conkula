@@ -74,6 +74,8 @@ def set_font(font):
         font = 'Roboto'
     elif font == 'lato'.casefold():
         font = 'Lato'
+    elif font == 'fira'.casefold():
+        font = 'Fira Code'
     else:
         print('Unsupported font selected, aborting.')
         return 1

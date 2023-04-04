@@ -1,8 +1,12 @@
 ### Dependencies
 
-- [Conky](https://github.com/brndnmtthws/conky) -- v.1.10 or higher due to new Lua syntax
+- [Conky](https://github.com/brndnmtthws/conky) -- v.1.10 or higher due to new Lua syntax. Try `conky --version` to see what version is currently installed on your System
 - [PyCurl](http://pycurl.io/)
-- __FONT__ font -- to be changed as this is not an open source font
+- One of the currently supported fonts installed on your System:
+    - [Lato](https://fonts.google.com/?query=Lato)
+    - [Roboto](https://fonts.google.com/?query=Roboto)
+    - [Fira Code](https://fonts.google.com/?query=Fira+Code)
+    - Mono (*default monospace font)
 
 ### Setup
 
@@ -53,6 +57,3 @@
 ### Screenshots
 
 ### To-dos
-
-monospace/non-monospace font
-additional fonts
