@@ -28,7 +28,7 @@ def fonts():
 def setup(*args):
     if len(args) >= 5:
         print('Error: too many arguments provided. \nTry `python3 conkula.py setup main_color accent_color city font`')
-        return 1
+        sys.exit(1)
     try:
         main_color = args[0]
         accent_color = args[1]
@@ -39,12 +39,12 @@ def setup(*args):
             font = 'Mono'
         if main_color not in list(possible_colors) or accent_color not in list(possible_colors):
             print('Error: invalid color selected. \nTry `python3 conkula.py colors` to see a list of possible colors')
-            return 1
+            sys.exit(1)
         print(f'Main color: {main_color} | Accent color: {accent_color} | Font: {font} | City: {city}')
         confirm = input('is your configuration correct? type `y` to proceed >>> ')
         if confirm != 'y':
-            print('Error: please enter a correct location. \nTry `warsaw` or `los+angeles`')
-            return 1
+            print('Error: you didn\'t confirm. \nAborting...')
+            sys.exit(1)
         else:
             run_setup(main_color, accent_color, city, font)
     except IndexError:
@@ -76,17 +76,18 @@ def set_colors(main_color, accent_color):
     time.sleep(0.5)
 
 def set_font(font):
-    if font == 'Mono'.casefold():
-        print('Font not selected, defaulting to Mono')
-    elif font == 'roboto'.casefold():
-        font = possible_fonts[font]
-    elif font == 'lato'.casefold():
-        font = possible_fonts[font]
-    elif font == 'fira'.casefold():
-        font = possible_fonts[font]
-    else:
-        print('Unsupported font selected, aborting.')
-        return 1
+    match font.casefold():
+        case "mono":
+            print('Font not selected, defaulting to Mono')
+        case "roboto":
+            font = possible_fonts[font]
+        case "lato":
+            font = possible_fonts[font]
+        case "fira":
+            font = possible_fonts[font]
+        case _:
+            print('Unsupported font selected, aborting.')
+            sys.exit(1)
     print(f'Setting the font to {font}')
     time.sleep(1)
     files = glob.glob(f'/home/{os.getlogin()}/.config/conky/conkula/conky_config/conky_*')

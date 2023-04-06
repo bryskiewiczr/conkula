@@ -43,24 +43,27 @@ def parse_temp(temperature: str) -> str:
 
 
 def parse_wind(wind_speed: str) -> str:
-    if wind_speed[0] == '↑':
-        wind_speed = f'North at {wind_speed[1:]}'
-    elif wind_speed[0] == '↗':
-        wind_speed = f'North-east at {wind_speed[1:]}'
-    elif wind_speed[0] == '→':
-        wind_speed = f'East at {wind_speed[1:]}'
-    elif wind_speed[0] == '↘':
-        wind_speed = f'South-east at {wind_speed[1:]}'
-    elif wind_speed[0] == '↓':
-        wind_speed = f'South at {wind_speed[1:]}'
-    elif wind_speed[0] == '↙':
-        wind_speed = f'South-west at {wind_speed[1:]}'
-    elif wind_speed[0] == '←':
-        wind_speed = f'West at {wind_speed[1:]}'
-    elif wind_speed[0] == '↖':
-        wind_speed = f'North-west at {wind_speed[1:]}'
+    match wind_speed[0]:
+        case "↑":
+            wind_speed = f'North at {wind_speed[1:]}'
+        case "↗":
+            wind_speed = f'North-east at {wind_speed[1:]}'
+        case "→":
+            wind_speed = f'East at {wind_speed[1:]}'
+        case "↘":
+            wind_speed = f'South-east at {wind_speed[1:]}'
+        case "↓":
+            wind_speed = f'South at {wind_speed[1:]}'
+        case "↙":
+            wind_speed = f'South-west at {wind_speed[1:]}'
+        case "←":
+            wind_speed = f'West at {wind_speed[1:]}'
+        case "↖":
+            wind_speed = f'North-west at {wind_speed[1:]}'
+        case "_":
+            print("It shouldn't happened - en.wttr.in has passed unsupported case - ", wind_speed[0])
+            sys.exit(1)
     return wind_speed
-
 
 def parse_location(location: str) -> str:
     location = location.replace('+' ,' ')
