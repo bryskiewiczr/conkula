@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 trap exit_trap EXIT
 set -e
@@ -7,7 +7,7 @@ exit_trap () {
   local lc="$BASH_COMMAND" rc=$?
   if [ $rc -ne 0 ]; then
     echo -e "\nCommand \033[1m[$lc]\033[0m exited with code [$rc]\n
-            To debug try to execute this command by yourself without '-q' flag"
+            To debug try to execute this command by yourself \033[4mwithout\033[0m '-q' flag"
   fi
 }
 
