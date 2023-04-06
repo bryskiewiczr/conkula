@@ -41,7 +41,7 @@
 2. Clone the repository into config directory and cd 
 
     ```
-    git clone https://github.com/bryskiewiczr/conkula.git .
+    git clone https://github.com/rbrysk/conkula.git .
     ```
 
 3. Start the setup script
