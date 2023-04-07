@@ -11,18 +11,17 @@ exit_trap () {
   fi
 }
 
-# [ Conky startup script ]
+killall conky
 echo 'starting Conky...'
-sleep 1
+sleep 0.5
 conky -qc ~/.config/conky/conkula/conky_config/conky_clock.lua
 echo 'Clock is up...'
-sleep 1
+sleep 0.5
 conky -qc ~/.config/conky/conkula/conky_config/conky_weather.lua
 echo 'Weather info is up...'
-sleep 1
+sleep 0.5
 conky -qc ~/.config/conky/conkula/conky_config/conky_system.lua
 echo 'System info is up...'
-sleep 1
+sleep 0.5
 conky -qc ~/.config/conky/conkula/conky_config/conky_spotify.lua
 echo 'Spotify info is up...'
-

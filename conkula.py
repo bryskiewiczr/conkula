@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import time
 import sys
@@ -5,27 +7,34 @@ import glob
 from subprocess import run
 
 
-possible_colors = {'white': 'f8f8f2',
-               'red': 'ff5555',
-               'yellow': 'f1fa8c',
-               'cyan': '8be9fd',
-               'orange': 'ffb86c',
-               'purple': 'bd93f9',
-               'pink': 'ff79c6',
-               'lime': '50fa7b'}
+possible_colors = {
+    'white': 'f8f8f2',
+    'red': 'ff5555',
+    'yellow': 'f1fa8c',
+    'cyan': '8be9fd',
+    'orange': 'ffb86c',
+    'purple': 'bd93f9',
+    'pink': 'ff79c6',
+    'lime': '50fa7b'
+}
 
-possible_fonts = {'lato': 'Lato',
-                  'roboto': 'Roboto',
-                  'fira': 'Fira Code',
-                  'mono': 'Mono'}
+possible_fonts = {
+    'lato': 'Lato',
+    'roboto': 'Roboto',
+    'fira': 'Fira Code',
+    'mono': 'Mono'
+}
 
 env_file = f'/home/{os.getlogin()}/.config/conky/conkula/python/env'
+
 
 def colors():
     print(', '.join(list(possible_colors)))
 
+
 def fonts():
     print(', '.join(list(possible_fonts)))
+
 
 def setup(*args):
     if len(args) >= 5:
@@ -52,6 +61,7 @@ def setup(*args):
     except IndexError:
         print('Error: not enough arguments provided. \nTry `python3 conkula.py setup main_color accent_color city font`')
     
+
 def run_setup(main_color, accent_color, city, font):
     create_env(env_file)
     set_font(font)
@@ -78,6 +88,7 @@ def set_colors(main_color, accent_color):
     print('Colors set!')
     time.sleep(0.5)
 
+
 def set_font(font):
     match font.casefold():
         case "mono":
@@ -103,6 +114,7 @@ def set_font(font):
     print('Font set!')
     time.sleep(0.5)
 
+
 def set_city(city, env_file):
     print(f'Setting city to {city.replace("+", " ")}')
     time.sleep(1)
@@ -110,6 +122,7 @@ def set_city(city, env_file):
         file_object.write("\nLOCATION = {}".format(city))
     print('City set!')
     time.sleep(0.5)
+
 
 def create_env(file):
     try:
@@ -123,6 +136,7 @@ def create_env(file):
         print(e)
         sys.exit(1)
 
+
 def initial_run():
     first_run = input('Would you like to run conky now? \n(y/n) >>> ')
     if first_run == 'y'.casefold():
@@ -134,6 +148,7 @@ def initial_run():
     else:
         print('Skipping the startup')
         print('Type `bash ~/.config/conky/conkula/startup.sh` to run conky if you change your mind!')
+
 
 if __name__ == '__main__':
     args = sys.argv
