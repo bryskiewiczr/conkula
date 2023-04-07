@@ -25,10 +25,9 @@ conky.config = {
     -- alignment
     alignment = 'top_right',
     gap_x = 150,
-    gap_y = 845,
+    gap_y = 600,
     minimum_height = 5,
     minimum_width = 300,
-    maximum_width = 300,
     -- borders
     border_width = 1,
     draw_borders = false,
@@ -48,17 +47,19 @@ conky.config = {
     default_outline_color = 'black',
     default_shade_color = 'black',
     -- user colors
-    color0 = '__ACCENT_COLOR__', -- ACCENT COLOR
-    color1 = '__MAIN_COLOR__', -- MAIN COLOR
+    color0 = '50fa7b', -- ACCENT COLOR
+    color1 = 'f8f8f2', -- MAIN COLOR
 }
 
-
-
 conky.text = [[
-${if_running spotify}\
-${font __FONT__:bold:size=24}${color1}${exec ~/.config/conky/conkula/sh/spotify_artist.sh}
-${alignr}${voffset -8}${font __FONT__:bold:size=18}${color0}${exec ~/.config/conky/conkula/sh/spotify_title.sh}
-${voffset -5}${font __FONT__:regular:size=12}${color1}${exec ~/.config/conky/conkula/sh/spotify_status.sh} \
-${voffset 1}${alignr}${color0}${execbar 5,200 ~/.config/conky/conkula/sh/spotify_playback_progress.sh}
-${endif}\
+${font Fira Code:regular:size=12}${color1}Host: ${alignr}${color0}${font Fira Code:bold:size=12}${nodename}
+${font Fira Code:regular:size=12}${color1}Uptime: ${alignr}${color0}${font Fira Code:bold:size=12}${uptime}
+${font Fira Code:regular:size=12}${color1}CPU: ${alignr}${color0}${font Fira Code:bold:size=12}${cpu cpu0}%
+${alignr}${cpubar 5,200}
+${font Fira Code:regular:size=12}${color1}RAM: ${alignr}${color0}${font Fira Code:bold:size=12}${memperc}%
+${alignr}${membar 5,200}
+${font Fira Code:regular:size=12}${color1}SWAP: ${alignr}${color0}${font Fira Code:bold:size=12}${swapperc}%
+${alignr}${swapbar 5,200}
+${font Fira Code:regular:size=12}${color1}Root: ${alignr}${color0}${font Fira Code:bold:size=12}${fs_used}/${fs_size /}
+${alignr}${fs_bar 5,200 /}
 ]]

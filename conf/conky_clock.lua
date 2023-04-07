@@ -25,7 +25,7 @@ conky.config = {
     -- alignment
     alignment = 'top_right',
     gap_x = 150,
-    gap_y = 600,
+    gap_y = 150,
     minimum_height = 5,
     minimum_width = 300,
     -- borders
@@ -47,19 +47,12 @@ conky.config = {
     default_outline_color = 'black',
     default_shade_color = 'black',
     -- user colors
-    color0 = '__ACCENT_COLOR__', -- ACCENT COLOR
-    color1 = '__MAIN_COLOR__', -- MAIN COLOR
+    color0 = '50fa7b', -- ACCENT COLOR
+    color1 = 'f8f8f2', -- MAIN COLOR
 }
 
 conky.text = [[
-${font __FONT__:regular:size=12}${color1}Host: ${alignr}${color0}${font __FONT__:bold:size=12}${nodename}
-${font __FONT__:regular:size=12}${color1}Uptime: ${alignr}${color0}${font __FONT__:bold:size=12}${uptime}
-${font __FONT__:regular:size=12}${color1}CPU: ${alignr}${color0}${font __FONT__:bold:size=12}${cpu cpu0}%
-${alignr}${cpubar 5,200}
-${font __FONT__:regular:size=12}${color1}RAM: ${alignr}${color0}${font __FONT__:bold:size=12}${memperc}%
-${alignr}${membar 5,200}
-${font __FONT__:regular:size=12}${color1}SWAP: ${alignr}${color0}${font __FONT__:bold:size=12}${swapperc}%
-${alignr}${swapbar 5,200}
-${font __FONT__:regular:size=12}${color1}Root: ${alignr}${color0}${font __FONT__:bold:size=12}${fs_used}/${fs_size /}
-${alignr}${fs_bar 5,200 /}
-]]
+${font Fira Code:bold:size=36}${color0}${time %H}:${time %M}:${time %S}
+${voffset -20}${font Fira Code:bold:size=24}${color1}${time %d} ${color0}${time %b} ${color1}${time %Y}
+${font Fira Code:bold:size=24}${color1}${time %A}
+]];

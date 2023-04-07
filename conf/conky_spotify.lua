@@ -5,7 +5,7 @@ conky.config = {
     double_buffer = true,
     net_avg_samples = 2,
     no_buffers = true,
-    update_interval = 1.0,
+    update_interval = 0.2,
     -- outs
     out_to_console = false,
     out_to_ncurses = false,
@@ -25,9 +25,10 @@ conky.config = {
     -- alignment
     alignment = 'top_right',
     gap_x = 150,
-    gap_y = 150,
+    gap_y = 845,
     minimum_height = 5,
     minimum_width = 300,
+    maximum_width = 300,
     -- borders
     border_width = 1,
     draw_borders = false,
@@ -47,13 +48,18 @@ conky.config = {
     default_outline_color = 'black',
     default_shade_color = 'black',
     -- user colors
-    color0 = '__ACCENT_COLOR__', -- ACCENT COLOR
-    color1 = '__MAIN_COLOR__', -- MAIN COLOR
+    color0 = '50fa7b', -- ACCENT COLOR
+    color1 = 'f8f8f2', -- MAIN COLOR
+    --
+    text_buffer_size = 512,
 }
 
 
 conky.text = [[
-${font __FONT__:bold:size=36}${color0}${time %H}:${time %M}:${time %S}
-${voffset -20}${font __FONT__:bold:size=24}${color1}${time %d} ${color0}${time %b} ${color1}${time %Y}
-${font __FONT__:bold:size=24}${color1}${time %A}
+${if_running spotify}\
+${font Fira Code:bold:size=24}${color1}${exec ~/.config/conky/conkula/scripts/spotify_artist.sh}
+${voffset -14}${alignr}${font Fira Code:bold:size=12}${color0}${exec ~/.config/conky/conkula/scripts/spotify_title.sh}
+${voffset 4}${font Fira Code:regular:size=12}${color1}${exec ~/.config/conky/conkula/scripts/spotify_status.sh} \
+${voffset 2}${alignr}${color0}${execbar 5,200 ~/.config/conky/conkula/scripts/spotify_playback_progress.sh}
+${endif}\
 ]]
