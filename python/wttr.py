@@ -1,12 +1,12 @@
 import sys
+import os
 
 from io import BytesIO
 from datetime import datetime
 
 import pycurl
 
-
-LOCATION = '__LOCATION__'
+import configparser as cp
 
 
 def get_weather(location: str, endpoint: str) -> str:
@@ -19,6 +19,15 @@ def get_weather(location: str, endpoint: str) -> str:
     value = buffer.getvalue().decode('UTF-8')
     return value
 
+
+# Get config
+this_folder = os.path.dirname(os.path.abspath(__file__))
+config_file = os.path.join(this_folder, 'env')
+vars = cp.ConfigParser()
+vars.read(config_file)
+
+# Set vars
+LOCATION = vars.get("vars", "LOCATION")
 
 # Get all data
 conditions = get_weather(LOCATION, '%C')
@@ -60,7 +69,7 @@ def parse_wind(wind_speed: str) -> str:
             wind_speed = f'West at {wind_speed[1:]}'
         case "↖":
             wind_speed = f'North-west at {wind_speed[1:]}'
-        case "_":
+        case _:
             print("It shouldn't happened - en.wttr.in has passed unsupported case - ", wind_speed[0])
             sys.exit(1)
     return wind_speed
