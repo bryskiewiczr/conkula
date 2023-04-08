@@ -21,13 +21,13 @@ sleep 0.5
 echo '\n[*] Starting Conky...'
 sleep 1.5
 conky -qc ~/.config/conky/conkula/conf/conky_clock.lua
-echo '\t[*] Clock is up...'
+echo '\t[*] Clock is up!'
 sleep 0.5
 conky -qc ~/.config/conky/conkula/conf/conky_weather.lua
-echo '\t[*] Weather info is up...'
+echo '\t[*] Weather info is up!'
 sleep 0.5
 conky -qc ~/.config/conky/conkula/conf/conky_system.lua
-echo '\t[*] System info is up...'
+echo '\t[*] System info is up!'
 sleep 0.5
 conky -qc ~/.config/conky/conkula/conf/conky_spotify.lua
-echo '\t[*] Spotify info is up...'
+echo '\t[*] Spotify info is up!'
