@@ -13,21 +13,21 @@ exit_trap () {
 
 if pgrep -x conky > /dev/null
 then
-  echo 'Killing old Conky processes...'
+  echo '\n[!] Killing old Conky processes...'
   killall conky
 fi
 sleep 0.5
 
-echo 'Starting Conky...'
+echo '\n[*] Starting Conky...'
 sleep 1.5
 conky -qc ~/.config/conky/conkula/conf/conky_clock.lua
-echo 'Clock is up...'
+echo '\t[*] Clock is up...'
 sleep 0.5
 conky -qc ~/.config/conky/conkula/conf/conky_weather.lua
-echo 'Weather info is up...'
+echo '\t[*] Weather info is up...'
 sleep 0.5
 conky -qc ~/.config/conky/conkula/conf/conky_system.lua
-echo 'System info is up...'
+echo '\t[*] System info is up...'
 sleep 0.5
 conky -qc ~/.config/conky/conkula/conf/conky_spotify.lua
-echo 'Spotify info is up...'
+echo '\t[*] Spotify info is up...'

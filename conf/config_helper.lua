@@ -61,8 +61,8 @@ function conf_main()
         default_outline_color = 'black',
         default_shade_color = 'black',
         -- env variables
-        color0 = get_env('MAIN_COLOR'),
-        color1 = get_env('ACCENT_COLOR'),
+        color0 = get_env('ACCENT_COLOR'),
+        color1 = get_env('MAIN_COLOR'),
         font0 = get_env('FONT') .. ':bold:size=36',
         font1 = get_env('FONT') .. ':bold:size=24',
         font2 = get_env('FONT') .. ':bold:size=12',

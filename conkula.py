@@ -36,12 +36,13 @@ def colors():
 def fonts():
     print('[*] Available fonts:')
     for font in possible_fonts:
-        print(f'\t[-] {font}')
+        print(f'\t[-] {font}\t-> {possible_fonts[font]}')
 
 
 def setup(*args):
     if len(args) >= 5:
-        print('\033[91mError: too many arguments provided. \nTry `python3 conkula.py setup main_color accent_color city font`')
+        print('\033[91m[!] Error: too many arguments provided.')
+        print('\033[0;36m[*] Try: `python3 conkula.py setup main_color accent_color city font`')
         sys.exit(1)
     try:
         main_color = args[0]
@@ -52,7 +53,12 @@ def setup(*args):
         except IndexError:
             font = 'Mono'
         if main_color not in list(possible_colors) or accent_color not in list(possible_colors):
-            print('\033[91mError: invalid color selected. \nTry `python3 conkula.py colors` to see a list of possible colors')
+            print('\033[91m[!] Error: invalid color selected.')
+            print('\033[0;36m[*] Try `python3 conkula.py colors` to see a list of possible colors')
+            sys.exit(1)
+        if font not in list(possible_fonts):
+            print('\033[91m[!] Error: invalid font selected.')
+            print('\033[0;36m[*] Try `python3 conkula.py fonts` to see a list of possible colors')
             sys.exit(1)
         print(f'[*] Configuration:')
         print(f'\t[-] Main Color: {main_color}\n\t[-] Accent Color: {accent_color}\n\t[-] Font: {font}\n\t[-] City: {city}\n\t')
@@ -63,7 +69,8 @@ def setup(*args):
         else:
             run_setup(main_color, accent_color, city, font)
     except IndexError:
-        print('Error: not enough arguments provided. \nTry `python3 conkula.py setup main_color accent_color city font`')
+        print('\033[91m[!] Error: not enough arguments provided.')
+        print('\033[0;36m[*] Try: `python3 conkula.py setup main_color accent_color city font`')
     
 
 def run_setup(main_color, accent_color, city, font):
@@ -75,29 +82,29 @@ def run_setup(main_color, accent_color, city, font):
 
 
 def set_city(city, env_file):
-    print(f'Setting city to {city.replace("+", " ")}')
+    print(f'\n[*] Setting city to {city.replace("+", " ")}')
     time.sleep(1)
     with open(env_file, 'a') as f:
         f.write(f'\nLOCATION={city}')
-    print('City set!')
+    print('\t[*] City set!')
     time.sleep(0.5)
 
 
 def set_colors(main_color, accent_color, env_file):
-    print(f'[*] Setting main color to {main_color}')
+    print(f'\n[*] Setting main color to {main_color}')
     print(f'[*] Setting accent color to {accent_color}')
     with open(env_file, 'a') as f:
         f.write(f'\nMAIN_COLOR={possible_colors[main_color]}')
         f.write(f'\nACCENT_COLOR={possible_colors[accent_color]}')
-    print('[*] Colors set!')
+    print('\t[*] Colors set!')
     time.sleep(0.5)
 
 
 def set_font(font, env_file):
-    print(f'[*] Setting font to {possible_fonts[font]}')
+    print(f'\n[*] Setting font to {possible_fonts[font]}')
     with open(env_file, 'a') as f:
         f.write(f'\nFONT={possible_fonts[font]}')
-    print('[*] Font set!')
+    print('\t[*] Font set!')
     time.sleep(0.5)
 
 
@@ -109,22 +116,21 @@ def create_env(file):
         with open(file, 'a') as file_object:
             file_object.write("[vars]")
     except OSError as e:
-        print('Failed creating the env file.')
+        print('\033[91m[!] Error: failed creating the env file.')
         print(e)
         sys.exit(1)
 
 
 def initial_run():
-    first_run = input('Would you like to run conky now? \n(y/n) >>> ')
+    first_run = input('\n[>] Would you like to run conky now?: ')
     if first_run == 'y'.casefold():
-        print('Here we go!')
         time.sleep(1)
         command = 'sh ~/.config/conky/conkula/startup.sh'
-        print(f'Executing {command}')
+        print(f'\n[*] Here we go! Executing `{command}`')
         run(f'{command}', shell=True, check=True, text=True)
     else:
-        print('Skipping the startup')
-        print('Type `bash ~/.config/conky/conkula/startup.sh` to run conky if you change your mind!')
+        print('\n\033[1;33m[!] Skipping the startup.')
+        print('\033[0;36m[*] Type: `bash ~/.config/conky/conkula/startup.sh` to run Conky if you change your mind!')
 
 
 if __name__ == '__main__':
@@ -132,5 +138,5 @@ if __name__ == '__main__':
     try:
         globals()[args[1]](*args[2:])
     except KeyError:
-        print('Error: invalid command\nHave you missed the `setup` keyword?')
-        print(f'Try: `python3 conkula.py setup main_color accent_color city font`')
+        print('\033[91m[!} Error: invalid command. Have you missed the `setup` keyword?')
+        print(f'\033[0;36m[*] Try: `python3 conkula.py setup main_color accent_color city font`')
