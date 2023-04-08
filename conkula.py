@@ -3,7 +3,6 @@
 import os
 import time
 import sys
-import glob
 from subprocess import run
 
 
@@ -69,7 +68,7 @@ def setup(*args):
 
 def run_setup(main_color, accent_color, city, font):
     create_env(env_file)
-    set_font(font)
+    set_font(font, env_file)
     set_colors(main_color, accent_color, env_file)
     set_city(city, env_file)
     initial_run()
@@ -78,8 +77,8 @@ def run_setup(main_color, accent_color, city, font):
 def set_city(city, env_file):
     print(f'Setting city to {city.replace("+", " ")}')
     time.sleep(1)
-    with open(env_file, 'a') as file_object:
-        file_object.write("\nLOCATION = {}".format(city))
+    with open(env_file, 'a') as f:
+        f.write(f'\nLOCATION={city}')
     print('City set!')
     time.sleep(0.5)
 
@@ -88,54 +87,17 @@ def set_colors(main_color, accent_color, env_file):
     print(f'[*] Setting main color to {main_color}')
     print(f'[*] Setting accent color to {accent_color}')
     with open(env_file, 'a') as f:
-        f.write(f'\nMAIN = {main_color}')
-        f.write(f'\nACCENT = {accent_color}')
+        f.write(f'\nMAIN_COLOR={possible_colors[main_color]}')
+        f.write(f'\nACCENT_COLOR={possible_colors[accent_color]}')
     print('[*] Colors set!')
     time.sleep(0.5)
 
 
-# def set_colors(main_color, accent_color):
-#     print('Setting colors...')
-#     time.sleep(1)
-#     print(f'Setting main color to {main_color}')
-#     time.sleep(1)
-#     print(f'Setting accent color to {accent_color}')
-#     time.sleep(1)
-#     files = glob.glob(f'/home/{os.getlogin()}/.config/conky/conkula/conf/conky_*')
-#     for file in files:
-#         with open(file, 'r') as f:
-#             data = f.read()
-#         data = data.replace('__MAIN_COLOR__', possible_colors[main_color])
-#         data = data.replace('__ACCENT_COLOR__', possible_colors[accent_color])
-#         with open(file, 'w') as f:
-#             f.write(data)
-#     print('Colors set!')
-#     time.sleep(0.5)
-
-
-def set_font(font):
-    match font.casefold():
-        case "mono":
-            print('Font not selected, defaulting to Mono')
-        case "roboto":
-            font = possible_fonts[font]
-        case "lato":
-            font = possible_fonts[font]
-        case "fira":
-            font = possible_fonts[font]
-        case _:
-            print('Unsupported font selected, aborting.')
-            sys.exit(1)
-    print(f'Setting the font to {font}')
-    time.sleep(1)
-    files = glob.glob(f'/home/{os.getlogin()}/.config/conky/conkula/conf/conky_*')
-    for file in files:
-        with open(file, 'r') as f:
-            data = f.read()
-        data = data.replace('__FONT__', font)
-        with open(file, 'w') as f:
-            f.write(data)
-    print('Font set!')
+def set_font(font, env_file):
+    print(f'[*] Setting font to {possible_fonts[font]}')
+    with open(env_file, 'a') as f:
+        f.write(f'\nFONT={possible_fonts[font]}')
+    print('[*] Font set!')
     time.sleep(0.5)
 
 

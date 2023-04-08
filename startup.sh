@@ -11,9 +11,15 @@ exit_trap () {
   fi
 }
 
-killall conky &
-echo 'starting Conky...'
+if pgrep -x conky > /dev/null
+then
+  echo 'Killing old Conky processes...'
+  killall conky
+fi
 sleep 0.5
+
+echo 'Starting Conky...'
+sleep 1.5
 conky -qc ~/.config/conky/conkula/conf/conky_clock.lua
 echo 'Clock is up...'
 sleep 0.5
