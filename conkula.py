@@ -58,7 +58,7 @@ def setup(*args):
             sys.exit(1)
         if font not in list(possible_fonts):
             print('\033[91m[!] Error: invalid font selected.')
-            print('\033[0;36m[*] Try `python3 conkula.py fonts` to see a list of possible colors')
+            print('\033[0;36m[*] Try `python3 conkula.py fonts` to see a list of possible fonts')
             sys.exit(1)
         print(f'[*] Configuration:')
         print(f'\t[-] Main Color: {main_color}\n\t[-] Accent Color: {accent_color}\n\t[-] Font: {font}\n\t[-] City: {city}\n\t')
@@ -138,5 +138,5 @@ if __name__ == '__main__':
     try:
         globals()[args[1]](*args[2:])
     except KeyError:
-        print('\033[91m[!} Error: invalid command. Have you missed the `setup` keyword?')
+        print('\033[91m[!] Error: invalid command. Have you missed the `setup` keyword?')
         print(f'\033[0;36m[*] Try: `python3 conkula.py setup main_color accent_color city font`')

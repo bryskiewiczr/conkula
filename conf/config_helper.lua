@@ -69,6 +69,7 @@ function conf_main()
         font3 = get_env('FONT') .. ':regular:size=36',
         font4 = get_env('FONT') .. ':regular:size=24',
         font5 = get_env('FONT') .. ':regular:size=12',
+        font9 = 'Weather Icons:regular:size=36',
     }
     return main_config
 end

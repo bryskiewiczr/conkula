@@ -4,9 +4,8 @@ import os
 from io import BytesIO
 from datetime import datetime
 
-import pycurl
-
 import configparser as cp
+import pycurl
 
 
 def get_weather(location: str, endpoint: str) -> str:
@@ -70,45 +69,57 @@ def parse_wind(wind_speed: str) -> str:
         case "↖":
             wind_speed = f'North-west at {wind_speed[1:]}'
         case _:
-            print("It shouldn't happened - en.wttr.in has passed unsupported case - ", wind_speed[0])
+            print("It shouldn't happen - en.wttr.in has passed unsupported case - ", wind_speed[0])
             sys.exit(1)
     return wind_speed
+
 
 def parse_location(location: str) -> str:
     location = location.replace('+' ,' ')
     location = location.capitalize()
     return location
 
+
 # Define print functions for Conky
 def print_location():
     print(parse_location(LOCATION))
 
+
 def print_conditions():
     print(conditions)
+
 
 def print_precipitation():
     print(precipitation)
 
+
 def print_pressure():
     print(pressure)
+
 
 def print_humidity():
     print(humidity)
 
+
 def print_wind():
     print(parse_wind(wind))
+
 
 def print_temp():
     print(parse_temp(temp))
 
+
 def print_feel():
     print(parse_temp(feel))
+
 
 def print_sunrise():
     print(sunrise)
 
+
 def print_sunset():
     print(sunset)
+
 
 def print_update_time():
     print(update_time)
