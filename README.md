@@ -103,14 +103,11 @@ killall conky
 ```
 ### Screenshots
 
-White and Lime setup with Fira Code font
+White and Lime setup with Fira Code font and icons to display the weather
 
-![White and Lime setup with Fira Code font](/screenshots/conkula_white_lime_fira_code.png?raw=true)
+![White and Lime setup with Fira Code font and icons to display the weather](/screenshots/whitelimefiraicons.png?raw=true)
 
-White and Purple setup with Lato font
+White and Lime setup with Fira Code font and text to display the weather
 
-![White and Purple setup with Lato font](/screenshots/conkula_white_purple_lato.png?raw=true)
+![White and Lime setup with Fira Code font and text to display the weather](/screenshots/whitelimefiratext.png?raw=true)
 
-Yellow and white setup with Roboto font
-
-![Yellow and white setup with Roboto font](/screenshots/conkula_yellow_white_roboto.png?raw=true)
