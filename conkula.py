@@ -56,7 +56,7 @@ def setup(*args):
             print('\033[0;36m[*] Try: `icons` or `text`')
             sys.exit(1)
         try:
-            font = args[4]
+            font = args[4].casefold()
         except IndexError:
             font = 'mono'
     except IndexError:
