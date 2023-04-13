@@ -18,6 +18,11 @@ function merge(a, b)
     return a
 end
 
+function weather_icons()
+    icons = get_env('WEATHER_ICONS')
+    return icons
+end
+
 -- main config
 function conf_main()
     main_config = {
@@ -69,7 +74,10 @@ function conf_main()
         font3 = get_env('FONT') .. ':regular:size=36',
         font4 = get_env('FONT') .. ':regular:size=24',
         font5 = get_env('FONT') .. ':regular:size=12',
-        font9 = 'Weather Icons:regular:size=36',
+        font6 = 'Weather Icons:regular:size=12',
+        font7 = 'Weather Icons:regular:size=24',
+        font8 = 'Weather Icons:regular:size=36',
+        font9 = 'Weather Icons:regular:size=72',
     }
     return main_config
 end

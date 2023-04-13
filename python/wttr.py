@@ -7,6 +7,17 @@ from datetime import datetime
 import configparser as cp
 import pycurl
 
+import wttr_conditions
+
+
+# Env vars
+this_folder = os.path.dirname(os.path.abspath(__file__))
+config_file = os.path.join(this_folder, 'env')
+vars = cp.ConfigParser()
+vars.read(config_file)
+LOCATION = vars.get("vars", "LOCATION")
+WEATHER_ICONS = vars.get("vars", "WEATHER_ICONS")
+
 
 def get_weather(location: str, endpoint: str) -> str:
     c = pycurl.Curl()
@@ -19,29 +30,6 @@ def get_weather(location: str, endpoint: str) -> str:
     return value
 
 
-# Get config
-this_folder = os.path.dirname(os.path.abspath(__file__))
-config_file = os.path.join(this_folder, 'env')
-vars = cp.ConfigParser()
-vars.read(config_file)
-
-# Set vars
-LOCATION = vars.get("vars", "LOCATION")
-
-# Get all data
-conditions = get_weather(LOCATION, '%C')
-precipitation = get_weather(LOCATION, '%p')
-pressure = get_weather(LOCATION, '%P')
-humidity = get_weather(LOCATION, '%h')
-wind = get_weather(LOCATION, '%w')
-temp = get_weather(LOCATION, '%t')
-feel = get_weather(LOCATION, '%f')
-sunrise = get_weather(LOCATION, '%S')
-sunset = get_weather(LOCATION, '%s')
-update_time = datetime.now().strftime('%H:%M:%S')
-
-
-# Parse the data to my liking
 def parse_temp(temperature: str) -> str:
     if temperature[0] == '+':  # remove the leading plus from temps above zero
         temperature = temperature[1:]
@@ -52,32 +40,59 @@ def parse_temp(temperature: str) -> str:
 
 def parse_wind(wind_speed: str) -> str:
     match wind_speed[0]:
-        case "↑":
-            wind_speed = f'North at {wind_speed[1:]}'
-        case "↗":
-            wind_speed = f'North-east at {wind_speed[1:]}'
-        case "→":
-            wind_speed = f'East at {wind_speed[1:]}'
-        case "↘":
-            wind_speed = f'South-east at {wind_speed[1:]}'
-        case "↓":
-            wind_speed = f'South at {wind_speed[1:]}'
-        case "↙":
-            wind_speed = f'South-west at {wind_speed[1:]}'
-        case "←":
-            wind_speed = f'West at {wind_speed[1:]}'
-        case "↖":
-            wind_speed = f'North-west at {wind_speed[1:]}'
+        case '↑':
+            wind_speed = f'N at {wind_speed[1:]}'
+        case '↗':
+            wind_speed = f'NE at {wind_speed[1:]}'
+        case '→':
+            wind_speed = f'E at {wind_speed[1:]}'
+        case '↘':
+            wind_speed = f'SE at {wind_speed[1:]}'
+        case '↓':
+            wind_speed = f'S at {wind_speed[1:]}'
+        case '↙':
+            wind_speed = f'SW at {wind_speed[1:]}'
+        case '←':
+            wind_speed = f'W at {wind_speed[1:]}'
+        case '↖':
+            wind_speed = f'NW at {wind_speed[1:]}'
         case _:
-            print("It shouldn't happen - en.wttr.in has passed unsupported case - ", wind_speed[0])
+            print(f'It shouldn\'t happen - en.wttr.in has passed unsupported case - {wind_speed[0]}')
             sys.exit(1)
     return wind_speed
 
 
 def parse_location(location: str) -> str:
-    location = location.replace('+' ,' ')
+    location = location.replace('+', ' ')
     location = location.capitalize()
     return location
+
+
+def parse_conditions(condition: str) -> str:
+    condition_check = condition.casefold()
+    if condition_check in wttr_conditions.clear:
+        condition = ''
+    elif condition_check in wttr_conditions.clouds:
+        condition = ''
+    elif condition_check in wttr_conditions.fog:
+        condition = ''
+    elif condition_check in wttr_conditions.heavy_rain:
+        condition = ''
+    elif condition_check in wttr_conditions.rain:
+        condition = ''
+    elif condition_check in wttr_conditions.rain_and_snow:
+        condition = ''
+    elif condition_check in wttr_conditions.snow:
+        condition = ''
+    elif condition_check in wttr_conditions.thunder:
+        condition = ''
+    elif condition_check in wttr_conditions.thunder_snow:
+        condition = ''
+    elif condition_check in wttr_conditions.thunder_rain:
+        condition = ''
+    else:
+        condition = f'It shouldn\'t happen - en.wttr.in has passed unsupported case - {condition}'
+    return condition
 
 
 # Define print functions for Conky
@@ -86,43 +101,46 @@ def print_location():
 
 
 def print_conditions():
-    print(conditions)
+    if WEATHER_ICONS == 'true':
+        print(parse_conditions(get_weather(LOCATION, '%C')))
+    else:
+        print(get_weather(LOCATION, '%C'))
 
 
 def print_precipitation():
-    print(precipitation)
+    print(get_weather(LOCATION, '%p'))
 
 
 def print_pressure():
-    print(pressure)
+    print(get_weather(LOCATION, '%P'))
 
 
 def print_humidity():
-    print(humidity)
+    print(get_weather(LOCATION, '%h'))
 
 
 def print_wind():
-    print(parse_wind(wind))
+    print(parse_wind(get_weather(LOCATION, '%w')))
 
 
 def print_temp():
-    print(parse_temp(temp))
+    print(parse_temp(get_weather(LOCATION, '%t')))
 
 
 def print_feel():
-    print(parse_temp(feel))
+    print(parse_temp(get_weather(LOCATION, '%f')))
 
 
 def print_sunrise():
-    print(sunrise)
+    print(get_weather(LOCATION, '%S'))
 
 
 def print_sunset():
-    print(sunset)
+    print(get_weather(LOCATION, '%s'))
 
 
 def print_update_time():
-    print(update_time)
+    print(datetime.now().strftime('%H:%M:%S'))
 
 
 if __name__ == '__main__':
